@@ -6,7 +6,7 @@ const query = graphql`
   query {
     file(relativePath: { eq: "profile-pic.png"}) {
       childImageSharp {
-        fixed(width: 180, height: 180) {
+        fixed(width: 200, height: 200) {
           ...GatsbyImageSharpFixed_withWebp_tracedSVG
         }
       }
