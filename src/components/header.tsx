@@ -7,7 +7,7 @@ const query = graphql`
     file(relativePath: { eq: "profile-pic.png"}) {
       childImageSharp {
         fixed(width: 180, height: 180) {
-          ...GatsbyImageSharpFixed
+          ...GatsbyImageSharpFixed_withWebp_tracedSVG
         }
       }
     }
@@ -17,12 +17,12 @@ const query = graphql`
 export const Header: React.FC = () => {
   const data = useStaticQuery(query)
 
-  return <div className="h-screen flex flex-col items-center justify-center py-32">
+  return <div className="h-screen flex flex-col items-center justify-center dark:bg-black">
     <div>
-      <Img className="rounded-full shadow-lg" fixed={data.file.childImageSharp.fixed} />
+      <Img className="rounded-full shadow-xl" fixed={data.file.childImageSharp.fixed} />
     </div>
     <div>
-      <h1 className="text-black text-5xl font-serif text-center font-bold mt-3">Sam Wight</h1>
+      <h1 className="text-black text-5xl font-serif text-center font-bold mt-5">Sam Wight</h1>
       <p className="max-w-lg text-balck text-xl font-serif text-center">Developer. CS student at The University of Alabama. President of Blueprint at UA.</p>
     </div>
   </div>
