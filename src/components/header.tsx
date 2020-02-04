@@ -4,10 +4,22 @@ import Img from 'gatsby-image'
 
 const query = graphql`
   query {
-    file(relativePath: { eq: "profile-pic.png"}) {
-      childImageSharp {
-        fixed(width: 200, height: 200) {
-          ...GatsbyImageSharpFixed_withWebp_tracedSVG
+    prismicHeader {
+      data {
+        name {
+          text
+        }
+        tagline {
+          text
+        }
+        profile_pic {
+          localFile {
+            childImageSharp {
+              fixed(width: 200, height: 200) {
+                ...GatsbyImageSharpFixed_withWebp_tracedSVG
+              }
+            }
+          }
         }
       }
     }
@@ -16,14 +28,16 @@ const query = graphql`
 
 export const Header: React.FC = () => {
   const data = useStaticQuery(query)
+  const { data: prismic } = data.prismicHeader
+  const image = prismic.profile_pic.localFile.childImageSharp.fixed
 
   return <div className="h-screen flex flex-col items-center justify-center dark:bg-black">
     <div>
-      <Img className="rounded-full shadow-xl" fixed={data.file.childImageSharp.fixed} />
+      <Img className="rounded-full shadow-xl" fixed={image} />
     </div>
     <div>
-      <h1 className="text-black text-5xl font-serif text-center font-bold mt-5">Sam Wight</h1>
-      <p className="max-w-lg text-balck text-xl font-serif text-center">Developer. CS student at The University of Alabama. President of Blueprint at UA.</p>
+      <h1 className="text-black text-5xl font-serif text-center font-bold mt-5">{prismic.name.text}</h1>
+      <p className="max-w-lg text-balck text-xl font-serif text-center">{prismic.tagline.text}</p>
     </div>
   </div>
 }

@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
+
 module.exports = {
   siteMetadata: {
     title: `Sam Wight`,
@@ -42,6 +46,15 @@ module.exports = {
         display: 'swap'
       }
     },
-    'gatsby-plugin-purgecss'
+    'gatsby-plugin-purgecss',
+    {
+      resolve: 'gatsby-source-prismic',
+      options: {
+        repositoryName: 'peronsal-site',
+        accessToken: process.env.API_KEY.toString(),
+        linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
+        shouldNormalizeImage: () => true
+      }
+    }
   ],
 }
