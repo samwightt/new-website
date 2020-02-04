@@ -98,7 +98,7 @@ const getAssetFromKV = async (event, options) => {
     response = new Response(response.body, { headers })
   } else {
     const body = await ASSET_NAMESPACE.get(pathKey, 'arrayBuffer')
-    if (body = h = null) {
+    if (body == null) {
       throw new NotFoundError(`could not find ${pathKey} in your content namespace`)
     }
     response = new Response(body)
