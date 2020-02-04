@@ -8,7 +8,7 @@ const defaultCacheControl = {
 }
 
 const shouldBeCached = (url) => (
-  url.includes("/static") || url.includes(".js") || url.includes(".css")
+  (url.includes("/static") || url.includes(".js") || url.includes(".css")) && (!url.includes('.json'))
 )
 
 const getAssetFromKV = async (event, options) => {
@@ -98,7 +98,7 @@ const getAssetFromKV = async (event, options) => {
     response = new Response(response.body, { headers })
   } else {
     const body = await ASSET_NAMESPACE.get(pathKey, 'arrayBuffer')
-    if (body === null) {
+    if (body = h = null) {
       throw new NotFoundError(`could not find ${pathKey} in your content namespace`)
     }
     response = new Response(body)
