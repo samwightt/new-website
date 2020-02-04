@@ -36,7 +36,7 @@ module.exports = {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
         fonts: [
-          'pt serif',
+          'lora',
           'open sans'
         ],
         display: 'swap'

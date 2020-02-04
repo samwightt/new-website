@@ -1,7 +1,7 @@
 module.exports = {
   theme: {
     fontFamily: {
-      'serif': ['PT Serif', 'serif'],
+      'serif': ['Lora', 'serif'],
       'sans': ['-apple-system', 'Open Sans', 'sans-serif']
     }
   }
