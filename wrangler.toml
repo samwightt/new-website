@@ -1,0 +1,8 @@
+name = "site"
+type = "webpack"
+account_id = "d794343c5f1070fba4683afb810e749d"
+route = "samw.dev/*"
+zone_id = "d5add608610f6eb32427222493fba2a0"
+
+[site]
+bucket = "./public"
