@@ -108,14 +108,14 @@ const getAssetFromKV = async (event, options) => {
     if (shouldEdgeCache) {
       response.headers.set('CF-Cache-Status', 'MISS')
       // determine Cloudflare cache behavior
-      if (shouldBeCached(requestKey.url)) headers.set('Cache-Control', 'public, max-age=31536000, immutable')
-      else headers.set('Cache-Control', 'public, max-age=0, must-revalidate')
+      if (shouldBeCached(requestKey.url)) response.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
+      else response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate')
       event.waitUntil(cache.put(cacheKey, response.clone()))
     }
   }
   response.headers.set('Content-Type', mimeType)
-  if (shouldBeCached(requestKey.url)) headers.set('Cache-Control', 'public, max-age=31536000, immutable')
-  else headers.set('Cache-Control', 'public, max-age=0, must-revalidate')
+  if (shouldBeCached(requestKey.url)) response.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
+  else response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate')
   return response
 }
 
