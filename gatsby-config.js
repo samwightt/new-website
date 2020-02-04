@@ -36,16 +36,6 @@ module.exports = {
     // `gatsby-plugin-offline`,
     'gatsby-plugin-typescript',
     'gatsby-plugin-postcss',
-    {
-      resolve: 'gatsby-plugin-google-fonts',
-      options: {
-        fonts: [
-          'lora',
-          'open sans'
-        ],
-        display: 'swap'
-      }
-    },
     'gatsby-plugin-purgecss',
     {
       resolve: 'gatsby-source-prismic',
