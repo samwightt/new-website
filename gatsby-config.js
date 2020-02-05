@@ -1,5 +1,5 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 module.exports = {
@@ -34,17 +34,22 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    'gatsby-plugin-typescript',
-    'gatsby-plugin-postcss',
-    'gatsby-plugin-purgecss',
+    "gatsby-plugin-typescript",
+    "gatsby-plugin-postcss",
+    "gatsby-plugin-purgecss",
     {
-      resolve: 'gatsby-source-prismic',
+      resolve: "gatsby-source-prismic-graphql",
       options: {
-        repositoryName: 'peronsal-site',
+        repositoryName: "peronsal-site",
         accessToken: process.env.API_KEY.toString(),
-        linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
-        shouldNormalizeImage: () => true
-      }
-    }
+        sharpKeys: [/image|photo|picture|icon/],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-extract-schema",
+      options: {
+        dest: `${__dirname}/src/schema.json`,
+      },
+    },
   ],
 }
