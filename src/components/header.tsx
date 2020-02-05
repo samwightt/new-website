@@ -1,6 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import BackgroundImage from 'gatsby-background-image'
 
 const query = graphql`
   query {
@@ -11,6 +12,15 @@ const query = graphql`
         }
         tagline {
           text
+        }
+        header_image {
+          localFile {
+            childImageSharp {
+              fluid(quality: 90, maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp_noBase64
+              }
+            }
+          }
         }
         profile_pic {
           localFile {
@@ -50,11 +60,15 @@ export const Header: React.FC = () => {
   const data = useStaticQuery(query)
   const { data: prismic } = data.prismicHeader
   const image = prismic.profile_pic.localFile.childImageSharp.fixed
+  const backImage = prismic.header_image.localFile.childImageSharp.fluid
   const { social_links } = prismic
 
-  console.log(social_links)
+  const backgroundImage = [
+    'linear-gradient(rgba(255, 255, 255, 0.0) 0, rgba(255, 255, 255, 0.7) 30%, rgba(255, 255, 255, 0.85), 60%, rgba(255, 255, 255, 1.0) 80%)',
+    backImage,
+  ]
 
-  return <div className="h-screen flex flex-col items-center justify-center dark:bg-black">
+  return <BackgroundImage Tag='div' fluid={backgroundImage} className="h-screen flex flex-col items-center justify-center">
     <div>
       <Img className="rounded-full shadow-xl" fixed={image} />
     </div>
@@ -67,5 +81,5 @@ export const Header: React.FC = () => {
         <SocialLink src={link.social_icon.localFile.publicURL} url={link.social_link.url} />
       ))}
     </div>
-  </div>
+  </BackgroundImage>
 }
