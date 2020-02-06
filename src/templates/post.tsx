@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
-import { RichText } from "prismic-reactjs"
-import { htmlSerializer } from "../components/htmlSerializer"
+import Layout from "../components/layout"
 import Header from "../components/PostHeader"
 
 export const query = graphql`
@@ -34,14 +33,14 @@ interface PageProps {
 const Page: React.FC<PageProps> = props => {
   const { post } = props.data.prismic
   return (
-    <div>
+    <Layout>
       <Header
         title={post.title}
         date={post.date_published}
         color={post.feature_imageSharp.colors.lightVibrant}
         featureImage={post.feature_imageSharp.childImageSharp.fluid}
       />
-    </div>
+    </Layout>
   )
 }
 
