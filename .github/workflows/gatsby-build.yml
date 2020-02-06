@@ -18,7 +18,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: npx gatsby build
+    - run: npx -n "-r dotenv/config" gatsby build
       env:
         CI: true
         DOTENV_CONFIG_API_KEY: ${{ secrets.PRISMIC_KEY }}
