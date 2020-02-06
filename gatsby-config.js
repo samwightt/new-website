@@ -41,7 +41,6 @@ module.exports = {
       resolve: "gatsby-source-prismic-graphql",
       options: {
         repositoryName: "peronsal-site",
-        accessToken: process.env.API_KEY ? process.env.API_KEY.toString() : "",
         sharpKeys: [/image|photo|picture|icon/],
         omitPrismicScript: true,
       },
