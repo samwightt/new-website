@@ -21,3 +21,4 @@ jobs:
     - run: npx gatsby build
       env:
         CI: true
+        DOTENV_CONFIG_API_KEY: ${{ secrets.PRISMIC_KEY }}
