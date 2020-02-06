@@ -43,6 +43,7 @@ module.exports = {
         repositoryName: "peronsal-site",
         accessToken: process.env.API_KEY ? process.env.API_KEY.toString() : "",
         sharpKeys: [/image|photo|picture|icon/],
+        omitPrismicScript: true,
       },
     },
     {
