@@ -34,3 +34,7 @@ jobs:
     - run: npx gatsby build
       env:
         CI: true
+    - name: Publish to Cloudflare
+      uses: cloudflare/wrangler-action@1.1.0
+      with:
+        apiToken: ${{ secrets.CF_API_TOKEN }}
