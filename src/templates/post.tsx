@@ -39,6 +39,7 @@ const Page: React.FC<PageProps> = props => {
         date={post.date_published}
         color={post.feature_imageSharp.colors.lightVibrant}
         featureImage={post.feature_imageSharp.childImageSharp.fluid}
+        darkColor={post.feature_imageSharp.colors.darkMuted}
       />
     </Layout>
   )

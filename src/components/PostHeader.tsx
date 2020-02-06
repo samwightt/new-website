@@ -10,6 +10,7 @@ interface HeaderProps {
   date: string
   featureImage: any
   color: string
+  darkColor: string
 }
 
 const convert = (hex: string, alpha: number) => {
@@ -25,24 +26,25 @@ const Header: React.FC<HeaderProps> = props => {
   const backgroundImage = [
     `linear-gradient(${convert(color, 0)} 0, ${convert(
       color,
-      0.75
-    )} 40%, ${convert(color, 0.95)} 80%, ${convert(color, 1.0)} 100%)`,
+      0.9
+    )} 75%, ${convert(color, 1.0)} 95%)`,
     props.featureImage,
   ]
 
   const options = {
-    heading1Class: "font-serif text-black text-5xl font-bold mt-5 text-center",
+    heading1Class: "font-serif text-black text-5xl font-bold mt-5",
     paragraphClass: "max-w-lg text-black text-xl font-serif text-center",
+    heading1Style: { color: props.darkColor },
   }
 
   return (
     <BackgroundImage
       Tag="div"
       fluid={backgroundImage}
-      className="py-48 flex flex-col items-center"
+      className="h-auto pt-64 pb-6 flex flex-row items-end justify-start"
       backgroundColor={color}
     >
-      <div>
+      <div className="container mx-auto">
         <RichText
           render={props.title}
           htmlSerializer={htmlSerializer(options)}

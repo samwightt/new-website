@@ -15,6 +15,7 @@ export const htmlSerializer = (options: OptionType = {}) => (
   key
 ) => {
   let className = ""
+  let style = {}
   switch (type) {
     case Elements.paragraph:
       className = options.paragraphClass
@@ -29,9 +30,10 @@ export const htmlSerializer = (options: OptionType = {}) => (
       className = options.heading1Class
         ? options.heading1Class
         : "font-serif text-black text-4xl font-bold my-4 mt-8"
+      style = options.heading1Style ? options.heading1Style : {}
 
       return (
-        <h1 {...key} className={className}>
+        <h1 {...key} className={className} style={style}>
           {children}
         </h1>
       )
