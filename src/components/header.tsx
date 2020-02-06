@@ -59,9 +59,9 @@ const SocialLink: React.FC<SocialLinkProps> = props => {
   return (
     <a
       href={props.url}
-      className="p-4 rounded-full bg-black hover:bg-gray-800 mr-2 ml-2"
+      className="rounded-full bg-black hover:bg-gray-800 mr-2 ml-2 w-12 h-12 flex justify-center items-center"
     >
-      <img alt={props.name} src={props.src} height={25} width={25} />
+      <img alt={props.name} src={props.src} height="auto" width="auto" />
     </a>
   )
 }
@@ -91,7 +91,7 @@ export const Header: React.FC = () => {
     <BackgroundImage
       Tag="div"
       fluid={backgroundImage}
-      className="h-screen flex flex-col items-center justify-center"
+      className="py-24 flex flex-col items-center"
     >
       <div>
         <Img
