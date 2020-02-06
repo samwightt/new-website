@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql, StaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
 import { RichText } from "prismic-reactjs"
@@ -66,8 +66,11 @@ const SocialLink: React.FC<SocialLinkProps> = props => {
   )
 }
 
-export const Header: React.FC = () => {
-  const data = useStaticQuery(HEAD_QUERY)
+interface HeaderProps {
+  data: any
+}
+
+const Header: React.FC<HeaderProps> = ({ data }) => {
   const headerPage = data.prismic.allHeaders.edges[0].node
   const {
     name,
@@ -115,3 +118,9 @@ export const Header: React.FC = () => {
     </BackgroundImage>
   )
 }
+
+const WrappedHeader = props => (
+  <StaticQuery query={HEAD_QUERY} render={data => <Header data={data} />} />
+)
+
+export default WrappedHeader

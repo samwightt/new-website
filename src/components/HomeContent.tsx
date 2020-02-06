@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, StaticQuery, useStaticQuery } from "gatsby"
 import { RichText } from "prismic-reactjs"
 import { htmlSerializer } from "./htmlSerializer"
 import Img from "gatsby-image"
@@ -73,9 +73,7 @@ const handleFragment = (slice: any) => {
   }
 }
 
-export const HomeContent = () => {
-  const data = useStaticQuery(HOME_QUERY)
-
+const HomeContent = ({ data }) => {
   return (
     <div className="flex flex-column justify-center">
       <div className="w-full max-w-4xl px-3">
@@ -88,3 +86,11 @@ export const HomeContent = () => {
     </div>
   )
 }
+
+const WrappedHomeContent = () => (
+  <StaticQuery
+    query={HOME_QUERY}
+    render={data => <HomeContent data={data} />}
+  />
+)
+export default WrappedHomeContent

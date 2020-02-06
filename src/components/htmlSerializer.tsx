@@ -112,7 +112,7 @@ export const htmlSerializer = (options: OptionType = {}) => (
         {
           href: element.data.url || linkResolver(element.data),
         },
-        targetAttr,
+        tareetAttr,
         relAttr
       )
       return (
