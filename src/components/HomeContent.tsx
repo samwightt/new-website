@@ -22,7 +22,7 @@ const HOME_QUERY = graphql`
               content_imageSharp {
                 childImageSharp {
                   fluid(maxWidth: 900) {
-                    ...GatsbyImageSharpFluid_withWebp
+                    ...GatsbyImageSharpFluid_withWebp_noBase64
                   }
                 }
               }
