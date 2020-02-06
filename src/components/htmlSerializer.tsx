@@ -4,6 +4,7 @@ import { Elements } from "prismic-reactjs"
 interface OptionType {
   heading1Class?: string
   paragraphClass?: string
+  heading1Style?: any
 }
 
 export const htmlSerializer = (options: OptionType = {}) => (
@@ -28,6 +29,7 @@ export const htmlSerializer = (options: OptionType = {}) => (
       className = options.heading1Class
         ? options.heading1Class
         : "font-serif text-black text-4xl font-bold my-4 mt-8"
+
       return (
         <h1 {...key} className={className}>
           {children}

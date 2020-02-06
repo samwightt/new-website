@@ -51,5 +51,6 @@ module.exports = {
         dest: `${__dirname}/src/schema.json`,
       },
     },
+    "gatsby-plugin-extract-image-colors",
   ],
 }
