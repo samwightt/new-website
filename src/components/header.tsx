@@ -5,7 +5,7 @@ import BackgroundImage from "gatsby-background-image"
 import { RichText } from "prismic-reactjs"
 import { htmlSerializer } from "./htmlSerializer"
 
-const query = graphql`
+const HEAD_QUERY = graphql`
   query {
     prismic {
       allHeaders {
@@ -67,7 +67,7 @@ const SocialLink: React.FC<SocialLinkProps> = props => {
 }
 
 export const Header: React.FC = () => {
-  const data = useStaticQuery(query)
+  const data = useStaticQuery(HEAD_QUERY)
   const headerPage = data.prismic.allHeaders.edges[0].node
   const {
     name,
