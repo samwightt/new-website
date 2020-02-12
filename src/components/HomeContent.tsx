@@ -75,7 +75,7 @@ const handleFragment = (slice: any) => {
 
 const HomeContent = ({ data }) => {
   return (
-    <div className="flex flex-column justify-center">
+    <div className="flex flex-column justify-center pb-10">
       <div className="w-full max-w-4xl px-3">
         <RichText
           render={data.prismic.page.title}

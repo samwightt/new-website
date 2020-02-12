@@ -14,7 +14,7 @@ const query = graphql`
   }
 `
 
-function SEO({ description, lang, meta, title, data }) {
+const SEO = ({ description, lang, meta, title, data }) => {
   const { site } = data
 
   const metaDescription = description || site.siteMetadata.description
