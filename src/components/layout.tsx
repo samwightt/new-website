@@ -3,8 +3,6 @@ import { StaticQuery, graphql } from "gatsby"
 import Footer from "./footer"
 
 import "./layout.css"
-import "typeface-lora"
-import "typeface-open-sans"
 
 const query = graphql`
   query SiteTitleQuery {

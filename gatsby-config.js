@@ -60,5 +60,12 @@ module.exports = {
       },
     },
     "gatsby-transformer-remark",
+    {
+      resolve: "gatsby-plugin-google-fonts",
+      options: {
+        fonts: ["lora", "open sans"],
+        display: "swap",
+      },
+    },
   ],
 }
